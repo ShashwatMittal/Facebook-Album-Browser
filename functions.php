@@ -1,16 +1,13 @@
 <?php
 
-// Functions.php file contains all the Functions required in the project.
+// This file contains all the Functions required in the project.
 require_once __DIR__ . '/Facebook/autoload.php';
 
-	if(isset($_GET['location'])){
-		Zip($_SERVER['DOCUMENT_ROOT'].'/'.$_GET['location'], 'albums.zip');
-	}
 // Sends a request to the FB Graph API and returns the Name, Id, and Cover Photo of all the Albums.
 function getAlbumData( $fb, $accessToken ) {
 
 	$fbApp	 = $fb->getApp(); // Gets the FB App to send the request.
-	$request = new Facebook\FacebookRequest( $fbApp, $accessToken, 'GET', '/me/', array( 'fields' => 'albums{id,name,picture{url}}' ) );
+	$request = new Facebook\FacebookRequest( $fbApp, $accessToken, 'GET', '/me/', array( 'fields' => 'name,albums{id,name,picture{url}}' ) );
 	try {
 		$response = $fb->getClient()->sendRequest( $request );
 	} catch ( Facebook\Exceptions\FacebookResponseException $e ) {
@@ -53,16 +50,16 @@ function getPhotosForAlbumId( $id, $fb, $accessToken ) {
 		array_push( $photoArray, $value[ 'images' ][ 0 ][ 'source' ] );
 	}
 	// Checking for Pagination in case more than 25 Photos exist.
-	if ( !isset($responseData[ 'photos' ][ 'paging' ][ 'next' ])) {
+	if ( !isset( $responseData[ 'photos' ][ 'paging' ][ 'next' ] ) ) {
 		return $photoArray;
 	} else {
 		// Parsing the next page URL from the Response.
 		$nextPageRequest = $responseData[ 'photos' ][ 'paging' ][ 'next' ];
 		while ( $nextPageRequest != NULL ) {
-			$responseData	 = file_get_contents( $nextPageRequest );
-			$responseData	 = json_decode( $responseData, True ); // Converting the Response into an Array object for Parsing
+			$responseData		 = file_get_contents( $nextPageRequest );
+			$formattedResponse	 = json_decode( $responseData, True ); // Converting the Response into an Array object for Parsing
 
-			foreach ( $responseData[ 'data' ] as $value ) {
+			foreach ( $formattedResponse[ 'data' ] as $value ) {
 				array_push( $photoArray, $value[ 'images' ][ 0 ][ 'source' ] );
 			}
 			$nextPageRequest = $responseData[ 'paging' ][ 'next' ];
@@ -72,6 +69,7 @@ function getPhotosForAlbumId( $id, $fb, $accessToken ) {
 	}
 }
 
+// Downloads the images on the server on the specified location into specific album folders.
 function download_image( $url, $destination_path = '' ) {
 	// CHECKS IF CURL DOES EXISTS. SOMETIMES WEB HOSTING DISABLES FILE GET CONTENTS
 	if ( function_exists( 'curl_version' ) ) {
@@ -95,48 +93,56 @@ function download_image( $url, $destination_path = '' ) {
 	fclose( $fp );
 }
 
-function Zip($source, $destination)
-{
-    if (!extension_loaded('zip') || !file_exists($source)) {
-        return false;
-    }
+// Zips the folder path provided to the function into a zip file as per the specified destination of the zip.
+function zip( $source, $destination ) {
+	if ( !extension_loaded( 'zip' ) || !file_exists( $source ) ) {
+		return false;
+	}
+	$zip = new ZipArchive();
+	if ( !$zip->open( $destination, ZIPARCHIVE::CREATE ) ) {
+		return false;
+	}
 
-    $zip = new ZipArchive();
-    if (!$zip->open($destination, ZIPARCHIVE::CREATE)) {
-        return false;
-    }
+	$source = str_replace( '\\', '/', realpath( $source ) );
 
-    $source = str_replace('\\', '/', realpath($source));
+	if ( is_dir( $source ) === true ) {
+		$files = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $source ), RecursiveIteratorIterator::SELF_FIRST );
 
-    if (is_dir($source) === true)
-    {
-        $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($source), RecursiveIteratorIterator::SELF_FIRST);
+		foreach ( $files as $file ) {
+			$file = str_replace( '\\', '/', $file );
 
-        foreach ($files as $file)
-        {
-            $file = str_replace('\\', '/', $file);
+			// Ignore "." and ".." folders
+			if ( in_array( substr( $file, strrpos( $file, '/' ) + 1 ), array( '.', '..' ) ) )
+				continue;
 
-            // Ignore "." and ".." folders
-            if( in_array(substr($file, strrpos($file, '/')+1), array('.', '..')) )
-                continue;
+			$file = realpath( $file );
 
-            $file = realpath($file);
+			if ( is_dir( $file ) === true ) {
+				$zip->addEmptyDir( str_replace( $source . '/', '', $file . '/' ) );
+			} else if ( is_file( $file ) === true ) {
+				$zip->addFromString( str_replace( $source . '/', '', $file ), file_get_contents( $file ) );
+			}
+		}
+	} else if ( is_file( $source ) === true ) {
+		$zip->addFromString( basename( $source ), file_get_contents( $source ) );
+	}
 
-            if (is_dir($file) === true)
-            {
-                $zip->addEmptyDir(str_replace($source . '/', '', $file . '/'));
-            }
-            else if (is_file($file) === true)
-            {
-                $zip->addFromString(str_replace($source . '/', '', $file), file_get_contents($file));
-            }
-        }
-    }
-    else if (is_file($source) === true)
-    {
-        $zip->addFromString(basename($source), file_get_contents($source));
-    }
-
-    return $zip->close();
+	return $zip->close();
 }
+
+// Deletes the Folder passed to it recursively. Should be cautiously. 
+function deleteImages( $dirPath ) {
+	$dir	 = $dirPath;
+	$it		 = new RecursiveDirectoryIterator( $dir, RecursiveDirectoryIterator::SKIP_DOTS );
+	$files	 = new RecursiveIteratorIterator( $it, RecursiveIteratorIterator::CHILD_FIRST );
+	foreach ( $files as $file ) {
+		if ( $file->isDir() ) {
+			rmdir( $file->getRealPath() );
+		} else {
+			unlink( $file->getRealPath() );
+		}
+	}
+	rmdir( $dir );
+}
+
 ?>

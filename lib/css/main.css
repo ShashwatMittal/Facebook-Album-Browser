@@ -7,6 +7,7 @@ and open the template in the editor.
     Created on : Oct 18, 2016, 7:59:04 PM
     Author     : Shashwat
 */
+
 .thumb{
     -webkit-background-size: cover;
     background-size: cover;
@@ -17,19 +18,27 @@ and open the template in the editor.
     height: 0;
     position: relative;
 }
-.thumbText{
+
+.thumbGradient h3{
     -webkit-font-smoothing: antialiased;
     position: relative;
-    top: 15px;
+    top: 0;
     color: #fff;
     font-size: 20px;
     left: 0;
     right: 0;
 }
+
+.glyphicon-menu-hamburger{
+    color:#fff;
+}
+
 .thumbBottom{
     margin-top: 10px;
     margin-bottom: 10px;
+    overflow: hidden;
 }
+
 .thumbGradient{
     background-image: -webkit-linear-gradient(to bottom,transparent,rgba(0,0,0,0.74));
     background-image: linear-gradient(to bottom,transparent,rgba(0,0,0,0.74));
@@ -40,6 +49,15 @@ and open the template in the editor.
     right: 0;
     position: absolute;
 }
+
 .selector{
     margin: 10px !Important; 
+}
+
+.container{
+    margin-top: 70px;
+}
+
+ul.nav button{
+    margin-right: 10px;
 }
