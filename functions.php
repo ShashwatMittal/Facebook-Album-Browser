@@ -49,7 +49,7 @@ function getPhotosForAlbumId( $id, $fb, $accessToken ) {
 	foreach ( $responseData[ 'photos' ][ 'data' ] as $value ) {
 		array_push( $photoArray, $value[ 'images' ][ 0 ][ 'source' ] );
 	}
-	// Checking for Pagination in case more than 25 Photos exist.
+	// Checking for next page in case more than 25 Photos exist.
 	if ( !isset( $responseData[ 'photos' ][ 'paging' ][ 'next' ] ) ) {
 		return $photoArray;
 	} else {
