@@ -145,4 +145,14 @@ function deleteImages( $dirPath ) {
 	rmdir( $dir );
 }
 
+function deleteZip( $dirPath ) {
+
+	if ( file_exists( $dirPath ) ) {
+		unlink( $dirPath );
+	}
+	else{
+		echo "No file deleted.";
+	}
+}
+
 ?>

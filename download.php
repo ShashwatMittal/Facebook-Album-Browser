@@ -27,7 +27,13 @@ if ( isset( $_GET[ 'zip' ] ) ) {
 }
 
 // Deletes the images once they are zipped and ready to be downloaded.
-if ( isset( $_GET[ 'delete' ] ) ) {
-	deleteImages( $_GET[ 'delete' ] );
+if ( isset( $_GET[ 'deleteImages' ] ) ) {
+	deleteImages( $_GET[ 'deleteImages' ] );
 	echo 'Images Deleted.';
+}
+
+// Deletes the zip file if the Modal is closed.
+if ( isset( $_GET[ 'deleteZip' ] ) ) {
+	deleteZip( $_GET[ 'deleteZip' ] );
+	echo 'Zip file deleted.';
 }

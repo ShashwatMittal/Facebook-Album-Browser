@@ -41,7 +41,7 @@ $albums		 = getAlbumData( $fb, $accessToken );
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#">Hello! <?php echo $albums[ 'name' ]; ?></a></li>
-						<button type="button" class="btn btn-default navbar-btn selectedDonwloadButton">Download Selected Albums</button>
+						<li><button type="button" class="btn btn-default navbar-btn selectedDonwloadButton">Download Selected Albums</button></li>
 					</ul>
 
 				</div>
