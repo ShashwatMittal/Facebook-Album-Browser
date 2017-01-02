@@ -37,3 +37,8 @@ if ( isset( $_GET[ 'deleteZip' ] ) ) {
 	deleteZip( $_GET[ 'deleteZip' ] );
 	echo 'Zip file deleted.';
 }
+
+if( isset($_GET[ 'albumID' ])){
+	$data = getPhotosForAlbumId( $_GET[ 'albumID' ], $fb, $accessToken );
+	echo json_encode($data);
+}

@@ -26,6 +26,7 @@ $albums		 = getAlbumData( $fb, $accessToken );
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<!-- Custom CSS file to implement custom CSS throughout the project.-->
 		<link rel="stylesheet" href="/lib/css/main.css">
+		<link rel="stylesheet" href="/lib/css/colorbox/colorbox.css">
 
 	</head>
 
@@ -56,7 +57,7 @@ $albums		 = getAlbumData( $fb, $accessToken );
 				$url	 = $value[ 'picture' ][ 'data' ][ 'url' ];
 				?>
 				<div class = 'col-md-4 col-sm-6 col-xs-12'>
-					<a class="colorbox" href="#">
+					<a href="#" class="slider" data-albumID="<?php echo $id ?>">
 						<div class = "col-md-12 thumb" style="background-image:url(<?php echo $url; ?>);">
 							<div class="thumbGradient">
 								<div class = " col-md-12 "><h3><?php echo $name; ?></h3></div>
@@ -92,6 +93,7 @@ $albums		 = getAlbumData( $fb, $accessToken );
 					</div>
 				</div>
 			</div>
+			<div class="colorbox"></div>
 		</div>
 
 
@@ -100,6 +102,7 @@ $albums		 = getAlbumData( $fb, $accessToken );
 			<!-- Latest compiled and minified JavaScript -->
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 			<script src="lib/js/main.js"></script>
+			<script src="lib/js/colorbox/jquery.colorbox-min.js"></script>
 	</body>
 
 </html>
