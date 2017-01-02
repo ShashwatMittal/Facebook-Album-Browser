@@ -58,6 +58,6 @@ and open the template in the editor.
     margin-top: 70px;
 }
 
-ul.nav button{
+ul.nav li button{
     margin-right: 10px;
 }
