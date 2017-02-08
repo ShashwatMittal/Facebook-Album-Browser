@@ -31,7 +31,7 @@ $albums		 = getAlbumData( $fb, $accessToken );
 	</head>
 
 	<body>
-		<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar navbar-inverse navbar-fixed-top"><!-- Navigation bar-->
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -41,10 +41,11 @@ $albums		 = getAlbumData( $fb, $accessToken );
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Hello! <?php echo $albums[ 'name' ]; ?></a></li>
+						<li><a href="#">Hello! <?php echo $albums[ 'name' ]; ?></a></li><!--Displaying user's name in the NavBar -->
+						<!--Download and Move button which downloads or moves all the selected Albums by the user. -->
+						<li><button type="button" class="btn btn-default navbar-btn selectedMoveButton">Move Selected Albums</button></li>
 						<li><button type="button" class="btn btn-default navbar-btn selectedDonwloadButton">Download Selected Albums</button></li>
 					</ul>
-
 				</div>
 			</div>
 		</div>
@@ -52,12 +53,12 @@ $albums		 = getAlbumData( $fb, $accessToken );
 		<div class="container container-fluid">
 			<?php
 			foreach ( $albums[ 'albums' ][ 'data' ] as $value ) {
-				$name	 = $value[ 'name' ];
-				$id		 = $value[ 'id' ];
-				$url	 = $value[ 'picture' ][ 'data' ][ 'url' ];
+				$name	 = $value[ 'name' ]; // Album Name
+				$id		 = $value[ 'id' ]; // Album ID
+				$url	 = $value[ 'picture' ][ 'data' ][ 'url' ]; // Cover Photo For Album
 				?>
 				<div class = 'col-md-4 col-sm-6 col-xs-12'>
-					<a href="#" class="slider" data-albumID="<?php echo $id ?>">
+					<a href="#" class="slider" data-ID="<?php echo $id ?>">
 						<div class = "col-md-12 thumb" style="background-image:url(<?php echo $url; ?>);">
 							<div class="thumbGradient">
 								<div class = " col-md-12 "><h3><?php echo $name; ?></h3></div>
@@ -94,6 +95,9 @@ $albums		 = getAlbumData( $fb, $accessToken );
 				</div>
 			</div>
 			<div class="colorbox"></div>
+			<div class="loader">
+				<img src="/lib/images/ajax-loader.gif"></img>
+			</div>
 		</div>
 
 

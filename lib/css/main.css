@@ -61,3 +61,23 @@ and open the template in the editor.
 ul.nav li button{
     margin-right: 10px;
 }
+
+.loader{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    visibility: hidden;
+}
+
+.loader img{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1001;
+    height: 32px;
+    width: 32px;
+}

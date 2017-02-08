@@ -58,11 +58,10 @@ function getPhotosForAlbumId( $id, $fb, $accessToken ) {
 		while ( $nextPageRequest != NULL ) {
 			$responseData		 = file_get_contents( $nextPageRequest );
 			$formattedResponse	 = json_decode( $responseData, True ); // Converting the Response into an Array object for Parsing
-
 			foreach ( $formattedResponse[ 'data' ] as $value ) {
 				array_push( $photoArray, $value[ 'images' ][ 0 ][ 'source' ] );
 			}
-			$nextPageRequest = $responseData[ 'paging' ][ 'next' ];
+			$nextPageRequest = $formattedResponse[ 'paging' ][ 'next' ];
 		}
 
 		return $photoArray;
@@ -149,9 +148,8 @@ function deleteZip( $dirPath ) {
 
 	if ( file_exists( $dirPath ) ) {
 		unlink( $dirPath );
-	}
-	else{
-		echo "No file deleted.";
+	} else {
+		echo "No file found.";
 	}
 }
 

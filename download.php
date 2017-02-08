@@ -5,8 +5,9 @@ session_start();
 //Required
 require_once __DIR__ . '/Facebook/autoload.php';
 
-//Required
+//Include the App ID, App Secret and the Callback url. Required!
 require_once 'config.php';
+// Functions file stores all the functions required for the project.
 require_once 'functions.php';
 
 $accessToken = $_SESSION[ 'accessToken' ];
@@ -21,7 +22,7 @@ if ( isset( $_GET[ 'albumID' ] ) && isset( $_GET[ 'albumName' ] ) ) {
 	echo $_GET[ 'albumName' ];
 }
 
-//This zips all the folder downloaded on the server.
+//This zips all the albums downloaded on the server.
 if ( isset( $_GET[ 'zip' ] ) ) {
 	zip( $_SERVER[ 'DOCUMENT_ROOT' ] . '/' . $_GET[ 'zip' ], 'albums.zip' );
 }
@@ -38,7 +39,7 @@ if ( isset( $_GET[ 'deleteZip' ] ) ) {
 	echo 'Zip file deleted.';
 }
 
-if( isset($_GET[ 'albumID' ])){
-	$data = getPhotosForAlbumId( $_GET[ 'albumID' ], $fb, $accessToken );
+if( isset($_GET[ 'ID' ])){
+	$data = getPhotosForAlbumId( $_GET[ 'ID' ], $fb, $accessToken );
 	echo json_encode($data);
 }
