@@ -2,7 +2,7 @@
 session_start();
 
 //Include Facebook PHP SDK
-require_once __DIR__ . '/Facebook/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 //Include the App ID, App Secret and the Callback url. 
 require_once 'config.php';

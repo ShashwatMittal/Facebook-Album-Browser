@@ -3,7 +3,7 @@
 session_start();
 
 //Required
-require_once __DIR__ . '/Facebook/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 //Include the App ID, App Secret and the Callback url. Required!
 require_once 'config.php';

@@ -1,7 +1,7 @@
 <?php
 
 // This file contains all the Functions required in the project.
-require_once __DIR__ . '/Facebook/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 // Sends a request to the FB Graph API and returns the Name, Id, and Cover Photo of all the Albums.
 function getAlbumData( $fb, $accessToken ) {

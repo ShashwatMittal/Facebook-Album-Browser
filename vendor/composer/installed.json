@@ -1,17 +1,17 @@
 [
     {
-        "name": "facebook/php-sdk-v4",
-        "version": "5.4.0",
-        "version_normalized": "5.4.0.0",
+        "name": "facebook/graph-sdk",
+        "version": "5.4.4",
+        "version_normalized": "5.4.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/facebook/php-graph-sdk.git",
-            "reference": "c69c3c0bb304ec1fe9400b4bc47ab641c9002eee"
+            "reference": "5d0c4865e80e231d48a4571841bd018828fe58e1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/facebook/php-graph-sdk/zipball/c69c3c0bb304ec1fe9400b4bc47ab641c9002eee",
-            "reference": "c69c3c0bb304ec1fe9400b4bc47ab641c9002eee",
+            "url": "https://api.github.com/repos/facebook/php-graph-sdk/zipball/5d0c4865e80e231d48a4571841bd018828fe58e1",
+            "reference": "5d0c4865e80e231d48a4571841bd018828fe58e1",
             "shasum": ""
         },
         "require": {
@@ -23,16 +23,17 @@
             "phpunit/phpunit": "~4.0"
         },
         "suggest": {
-            "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client"
+            "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client",
+            "paragonie/random_compat": "Provides a better CSPRNG option in PHP 5"
         },
-        "time": "2016-10-12 18:53:27",
+        "time": "2017-01-19 15:42:20",
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "5.x-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Facebook\\": "src/Facebook/"
@@ -56,8 +57,7 @@
         "keywords": [
             "facebook",
             "sdk"
-        ],
-        "abandoned": "facebook/graph-sdk"
+        ]
     },
     {
         "name": "psr/http-message",
@@ -84,7 +84,7 @@
                 "dev-master": "1.0.x-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Psr\\Http\\Message\\": "src/"
@@ -143,7 +143,7 @@
                 "dev-master": "1.4-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "GuzzleHttp\\Psr7\\": "src/"
@@ -199,7 +199,7 @@
                 "dev-master": "1.4-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "GuzzleHttp\\Promise\\": "src/"
@@ -256,7 +256,7 @@
                 "dev-master": "6.2-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "files": [
                 "src/functions_include.php"
@@ -320,7 +320,7 @@
         },
         "time": "2016-10-04 00:57:04",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "files": [
                 "phpseclib/bootstrap.php"
@@ -407,7 +407,7 @@
                 "dev-master": "1.0.x-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Psr\\Log\\": "Psr/Log/"
@@ -486,7 +486,7 @@
                 "dev-master": "2.0.x-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Monolog\\": "src/Monolog"
@@ -531,7 +531,7 @@
         },
         "time": "2016-07-18 04:51:16",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Firebase\\JWT\\": "src"
@@ -576,7 +576,7 @@
         },
         "time": "2017-01-11 18:53:21",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-0": {
                 "Google_Service_": "src"
@@ -617,7 +617,7 @@
                 "dev-master": "1.0.x-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Psr\\Cache\\": "src/"
@@ -669,7 +669,7 @@
         },
         "time": "2016-11-02 14:59:14",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "classmap": [
                 "src/"
@@ -732,7 +732,7 @@
                 "dev-master": "2.x-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-0": {
                 "Google_": "src/"

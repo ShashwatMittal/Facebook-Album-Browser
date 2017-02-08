@@ -114,9 +114,6 @@ abstract class CredentialsLoader implements FetchAuthTokenInterface
      */
     public static function makeCredentials($scope, array $jsonKey)
     {
-		echo "<pre>jsonkey";
-		print_r( $jsonKey );
-		echo "</pre>";
         if (!array_key_exists('type', $jsonKey)) {
             throw new \InvalidArgumentException('json key is missing the type field');
         }
