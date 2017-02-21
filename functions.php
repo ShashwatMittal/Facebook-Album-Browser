@@ -1,9 +1,16 @@
 <?php
 
-// This file contains all the Functions required in the project.
+/**
+ * This file contains all the Functions required in the project.
+ */
 require_once __DIR__ . '/vendor/autoload.php';
 
-// Sends a request to the FB Graph API and returns the Name, Id, and Cover Photo of all the Albums.
+/**
+ * Sends a request to the FB Graph API and returns the Name, Id, and Cover Photo of all the Albums.
+ * @param type $fb
+ * @param type $accessToken
+ * @return type
+ */
 function getAlbumData( $fb, $accessToken ) {
 
 	$fbApp	 = $fb->getApp(); // Gets the FB App to send the request.
@@ -25,8 +32,14 @@ function getAlbumData( $fb, $accessToken ) {
 	return $responseData; // Returning the response data.
 }
 
-// Sends a request to the FB Graph API and returns all the photos for the Specific Album the request has been made for.
-// Arguments involve the Album ID for which the request has been made, Facebook Object and Access Token.
+
+/**
+ * Fetches the link to the Photos from FB Graph API.
+ * @param type $id The ID of the Album whose photos are fetched.
+ * @param type $fb The FB object for sending the requests to the Graph API.
+ * @param type $accessToken Access Token required for Authorization.
+ * @return array An array of links to the Photos of the Album.
+ */
 function getPhotosForAlbumId( $id, $fb, $accessToken ) {
 	$fbApp	 = $fb->getApp(); // Gets the Fb App to send the request.
 	$request = new Facebook\FacebookRequest( $fbApp, $accessToken, 'GET', $id, array( 'fields' => 'photos{images}' ) );
@@ -68,7 +81,11 @@ function getPhotosForAlbumId( $id, $fb, $accessToken ) {
 	}
 }
 
-// Downloads the images on the server on the specified location into specific album folders.
+/**
+ * Saves the images on the Server into folders with the Album name as Folder Name.
+ * @param type $url The path to the image.
+ * @param type $destination_path The path where the photos should be saved on the server.
+ */
 function download_image( $url, $destination_path = '' ) {
 	// CHECKS IF CURL DOES EXISTS. SOMETIMES WEB HOSTING DISABLES FILE GET CONTENTS
 	if ( function_exists( 'curl_version' ) ) {
@@ -92,7 +109,12 @@ function download_image( $url, $destination_path = '' ) {
 	fclose( $fp );
 }
 
-// Zips the folder path provided to the function into a zip file as per the specified destination of the zip.
+/**
+ * Converts the Image folder into a ZIP file and saves it at the specified destination on the server.
+ * @param type $source The folder to be zipped.
+ * @param type $destination The place to save
+ * @return boolean
+ */
 function zip( $source, $destination ) {
 	if ( !extension_loaded( 'zip' ) || !file_exists( $source ) ) {
 		return false;
@@ -129,7 +151,10 @@ function zip( $source, $destination ) {
 	return $zip->close();
 }
 
-// Deletes the Folder passed to it recursively. Should be cautiously. 
+/**
+ * Deletes the Folder on the server.
+ * @param type $dirPath The path to the Folder to be deleted.
+ */
 function deleteImages( $dirPath ) {
 	$dir	 = $dirPath;
 	$it		 = new RecursiveDirectoryIterator( $dir, RecursiveDirectoryIterator::SKIP_DOTS );
@@ -144,6 +169,10 @@ function deleteImages( $dirPath ) {
 	rmdir( $dir );
 }
 
+/**
+ * Deletes the zip 
+ * @param type $dirPath 
+ */
 function deleteZip( $dirPath ) {
 
 	if ( file_exists( $dirPath ) ) {

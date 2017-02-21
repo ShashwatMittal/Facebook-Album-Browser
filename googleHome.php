@@ -37,13 +37,14 @@ function getAlbumLink( $entry ) {
 
 // Converts the image data into binary and the post request to the servers.
 function uploadPhoto( $client ) {
-	$filename	 = __DIR__ . '/lib/images/image1.jpeg';
+	$filename	 = __DIR__ . '/lib/images/profile.JPG';
 	$fileSize	 = filesize( $filename ); // Calculating the size of the File to be uploaded.
 	$fh			 = fopen( $filename, 'rb' );
 	$imgData	 = fread( $fh, $fileSize ); // Converting the file into Binary.
 	fclose( $fh );
 	// Setting the Header data to be sent with the POST request.
 	$header		 = array( 'Authorization: GoogleLogin auth= ' . $client->getAccessToken(), 'Content-Type: image/jpeg', 'Content-Length: ' . $fileSize, 'Slug: ' . basename( $filename ) );
+	print_r($header);
 	print_r( curl_post( 'https://picasaweb.google.com/data/feed/api/user/default/albumid/default', $header, $imgData ) );
 }
 

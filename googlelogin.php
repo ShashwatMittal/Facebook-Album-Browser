@@ -9,7 +9,7 @@ if ( isset( $_SESSION[ 'access_token' ] ) && $_SESSION[ 'access_token' ] ) {
 	if ( $client->isAccessTokenExpired() ) {
 		$_SESSION[ 'access_token' ] = $client->refreshToken( '1/_k6Sk3rOPpCjSaHczgi-3i4xoeXxLWf59519N7qfQ58' );
 	}
-
+	error_log(var_export($_SESSION[ 'access_token' ],true));
 	$client->setAccessToken( $_SESSION[ 'access_token' ] );
 	$data		 = array( 'access_token' => $_SESSION[ 'access_token' ][ 'access_token' ] );
 	$response	 = file_get_contents( 'https://picasaweb.google.com/data/feed/api/user/default' . '?' . http_build_query( $data ) );

@@ -50,33 +50,40 @@ $albums		 = getAlbumData( $fb, $accessToken );
 			</div>
 		</div>
 
-		<div class="container container-fluid">
-			<?php
-			foreach ( $albums[ 'albums' ][ 'data' ] as $value ) {
-				$name	 = $value[ 'name' ]; // Album Name
-				$id		 = $value[ 'id' ]; // Album ID
-				$url	 = $value[ 'picture' ][ 'data' ][ 'url' ]; // Cover Photo For Album
-				?>
-				<div class = 'col-md-4 col-sm-6 col-xs-12'>
-					<a href="#" class="slider" data-ID="<?php echo $id ?>">
-						<div class = "col-md-12 thumb" style="background-image:url(<?php echo $url; ?>);">
-							<div class="thumbGradient">
-								<div class = " col-md-12 "><h3><?php echo $name; ?></h3></div>
-							</div>							
-						</div>
-					</a>
-					<div class = 'col-md-12 thumbBottom'>
-						<div class="col-md-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-2 col-sm-2 col-xs-2">
-							<input class="selector" type="checkbox" data-albumID = "<?php echo $id ?>" data-albumName = "<?php echo $name; ?>">
-						</div>
-						<div class="col-md-6 col-sm-6 col-xs-6">
-							<button class="single_dl_button btn btn-default" data-albumID = "<?php echo $id; ?>" data-albumName ="<?php echo $name; ?>" >Download This Album</button>
+
+
+		<div class="container">
+			<div class="row">
+
+				<?php
+				foreach ( $albums[ 'albums' ][ 'data' ] as $value ) {
+					$name	 = $value[ 'name' ]; // Album Name
+					$id		 = $value[ 'id' ]; // Album ID
+					$url	 = $value[ 'picture' ][ 'data' ][ 'url' ]; // Cover Photo For Album
+					?>	
+
+					<div class="col-md-4">
+						<a href="#" class="slider" data-ID="<?php echo $id ?>">
+							<div class="thumb" style="background-image:url(<?php echo $url; ?>);">
+								<div class="thumbGradient">
+									<div class="col-md-4"><h3><?php echo $name; ?></h3></div>
+								</div>							
+							</div>
+						</a>
+						<div class="thumbBottom">
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-left">
+								<input class="selector" type="checkbox" data-albumID = "<?php echo $id ?>" data-albumName = "<?php echo $name; ?>">
+							</div>
+							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 text-right">
+								<button class="single_mv_button btn btn-default" data-albumID = "<?php echo $id; ?>" data-albumName ="<?php echo $name; ?>">Move</button>
+								<button class="single_dl_button btn btn-default" data-albumID = "<?php echo $id; ?>" data-albumName ="<?php echo $name; ?>" >Download</button>
+							</div>
 						</div>
 					</div>
-				</div>
-				<?php
-			}
-			?>
+					<?php
+				}
+				?>
+			</div>
 			<div class="modal fade" id="downloadModal" role="dialog">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -86,7 +93,7 @@ $albums		 = getAlbumData( $fb, $accessToken );
 						</div>
 						<div class="modal-body">
 							<p>Click on the link below to download the file.</p>
-							<a href='/albums.zip' download="albums.zip">Zipped Files.</a>
+							<a href="/albums.zip" download="albums.zip">Zipped Files.</a>
 						</div>
 						<div class="modal-footer">
 							<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
@@ -96,17 +103,17 @@ $albums		 = getAlbumData( $fb, $accessToken );
 			</div>
 			<div class="colorbox"></div>
 			<div class="loader">
-				<img src="/lib/images/ajax-loader.gif"></img>
+				<img src="/lib/images/ring-alt.svg"></img>
 			</div>
 		</div>
 
 
-			<!-- Jquery -->
-			<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
-			<!-- Latest compiled and minified JavaScript -->
-			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-			<script src="lib/js/main.js"></script>
-			<script src="lib/js/colorbox/jquery.colorbox-min.js"></script>
+		<!-- Jquery -->
+		<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="lib/js/main.js"></script>
+		<script src="lib/js/colorbox/jquery.colorbox-min.js"></script>
 	</body>
 
 </html>
