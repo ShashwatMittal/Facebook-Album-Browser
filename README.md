@@ -19,22 +19,22 @@ When the user clicks on the download button the app fetches the photos in the al
 
 For privacy issues the app deletes the images downloaded in the background as soon as the Zip file is created. Also the Zip file is deleted when the user dismisses the donwload modal presented after the zip has been made.
 
-## Libraries Used:
+### Libraries Used:
 
 * [Facebook Javascript SDK](https://developers.facebook.com/docs/javascript) for Login.
 * [Facebook PHP SDK](https://developers.facebook.com/docs/reference/php/) for Fetching User Data.
 * [Colorbox](http://www.jacklmoore.com/colorbox/) Library for displaying Slideshow.
 * [jQuery](https://jquery.com/) for Javascript Library
 
-## Frameworks Used:
+### Frameworks Used:
 
 * [Bootstrap](http://getbootstrap.com/) for the Styling of the Application.
 
-## Package Manager:
+### Package Manager:
 
 * [Composer](https://getcomposer.org/)
 
-## Others:
+### Others:
 
 * [PHP Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer) for Coding Standards
 * [PHPUnit](https://phpunit.de/) for Unit Testing
