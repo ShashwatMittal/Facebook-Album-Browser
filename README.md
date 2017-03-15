@@ -1,5 +1,5 @@
 # Facebook Album Browser
-===
+
 
 By [Shashwat Mittal](http://www.shashwatmittal.com)
 
@@ -21,21 +21,21 @@ For privacy issues the app deletes the images downloaded in the background as so
 
 ## Libraries Used:
 
-* Facebook Javascript SDK for Login.
-* Facebook PHP SDK for Fetching User Data.
-* Colorbox Library for displaying Slideshow.
-* jQuery for Javascript Library
+* [Facebook Javascript SDK](https://developers.facebook.com/docs/javascript) for Login.
+* [Facebook PHP SDK](https://developers.facebook.com/docs/reference/php/) for Fetching User Data.
+* [Colorbox](http://www.jacklmoore.com/colorbox/) Library for displaying Slideshow.
+* [jQuery](https://jquery.com/) for Javascript Library
 
 ## Frameworks Used:
 
-* Bootstrap for the Styling of the Application.
+* [Bootstrap](http://getbootstrap.com/) for the Styling of the Application.
 
 ## Package Manager:
 
-* Composer
+* [Composer](https://getcomposer.org/)
 
 ## Others:
 
-* PHP Code Sniffer for Coding Standards
-* PHPUnit for Unit Testing
+* [PHP Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer) for Coding Standards
+* [PHPUnit](https://phpunit.de/) for Unit Testing
 
