@@ -8,58 +8,28 @@ and open the template in the editor.
     Author     : Shashwat
 */
 
-.thumb{
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    width: 100%;
-    padding-bottom: 66.67%;
-    height: 0;
-    position: relative;
+.btn-opt{
+    margin-bottom: 12px;
+    padding: 6px 8px;
+    font-weight: 700;
 }
 
-.thumbGradient h3{
-    -webkit-font-smoothing: antialiased;
-    position: relative;
-    top: 0;
-    color: #fff;
-    font-size: 20px;
-    left: 0;
-    right: 0;
+.download-options{
+    margin-top: 64px;
+}
+
+.download-options label{
+    vertical-align: bottom;
+    padding-bottom: 14px;    
+}
+
+.download-options label input{
+    margin: 4px;
+    vertical-align: bottom;
 }
 
 .glyphicon-menu-hamburger{
     color:#fff;
-}
-
-.thumbBottom{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    overflow: hidden;
-}
-
-.thumbGradient{
-    background-image: -webkit-linear-gradient(to bottom,transparent,rgba(0,0,0,0.74));
-    background-image: linear-gradient(to bottom,transparent,rgba(0,0,0,0.74));
-    content: '';
-    height: 75px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-}
-
-.selector{
-    margin: 10px !Important; 
-}
-
-.container{
-    margin-top: 70px;
-}
-
-ul.nav li button{
-    margin-right: 10px;
 }
 
 .loader{
@@ -74,10 +44,64 @@ ul.nav li button{
 }
 
 .loader img{
-    position: fixed;
+    position: absolute;
     left: 50%;
     top: 50%;
     z-index: 1001;
     height: 32px;
     width: 32px;
 }
+
+.no-padding{
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+.selector{
+    margin: 10px !Important; 
+}
+
+.thumb{
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding-bottom: 66.67%;
+    height: 0;
+    position: relative;
+}
+
+.thumb-bottom{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+
+.thumb-gradient{
+    background-image: -webkit-linear-gradient(to bottom,transparent,rgba(0,0,0,0.74));
+    background-image: linear-gradient(to bottom,transparent,rgba(0,0,0,0.74));
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+}
+
+.thumb-gradient h3{
+    -webkit-font-smoothing: antialiased;
+    color: #fff;
+    font-size: 20px;
+    line-height: 1.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+ul.nav li button{
+    margin: 9px 15px;
+    font-size: 12px;
+    padding: 6px 8px;
+    font-weight: 700;
+}
+
