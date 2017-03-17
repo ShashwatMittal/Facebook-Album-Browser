@@ -22,8 +22,7 @@ class FunctionsTest extends TestCase {
      */
     public function testdonwloadImage() {
 
-        $testurl = 'http://vignette1.wikia.nocookie.net/looneytunes/images/0/0b/
-            Bugs-Bunny-Whats-Up-Doc-Cover.png/revision/latest?cb=20130209211559';
+        $testurl = 'http://lorempixel.com/output/food-q-c-640-480-1.jpg';
         $this->assertTrue( downloadImage( $testurl, 'images/' ) );
     }
 
