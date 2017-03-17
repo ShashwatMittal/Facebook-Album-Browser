@@ -131,7 +131,7 @@ function downloadImage( $url, $destination_path = '' )
  * @param String $source      The folder to be zipped.
  * @param String $destination The destination to save the zip folder at.
  * 
- * @return boolean TRUE or FALSE
+ * @return boolean
  */
 function zip( $source, $destination ) 
 {
@@ -200,5 +200,3 @@ function deletePath( $dirPath )
         return false;
     }
 }
-
-?>
