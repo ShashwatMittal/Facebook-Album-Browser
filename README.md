@@ -5,19 +5,16 @@ By [Shashwat Mittal](http://www.shashwatmittal.com)
 
 ## Description
 
-Facebook Album Browser is a Web Application that allows the User to View their Public Facebook ALbums in Full Screen mode and Donwload the albums.
+Facebook Album Browser is a web application which allows to view/download your public Facebook albums.
 
+### Working
 
-When the user visits the script page the application Prompts the user for Facebook Login and asks for the Necessary permissions required to display the albums.
-After the user grants access it redirects the user to a Home page where it displays all the albums of a User as a thumbnail with Album names and download options.
+When the user visits the site, it prompts the user for Facebook login.
+Once the access is given it displays all the public Facebook albums.
+Clicking on any of the album will start a slide show of all the photos inside that particular album.
+User has the option to download single, multiple or all albums.
 
-When the user clicks on any Album thumbnail it start a slide-show of all the photos inside that album in full screen mode.
-
-The user have to option to download a Single album, Multiple albums by selecting each album as desired by the user and they can also download all the albums at once.
-
-When the user clicks on the download button the app fetches the photos in the album in the background and zips them into a Single zip file and prompts the user with a download link to that zip file.
-
-For privacy issues the app deletes the images downloaded in the background as soon as the Zip file is created. Also the Zip file is deleted when the user dismisses the donwload modal presented after the zip has been made.
+The application does not store any user data. 
 
 ### Libraries Used:
 
