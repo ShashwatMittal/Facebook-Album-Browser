@@ -115,7 +115,7 @@ $albums      = getAlbumData($fb, $accessToken);
                         </div>
                         <div class="modal-body">
                             <p>Click on the link below to download the file.</p>
-                            <a href="/albums.zip" download="albums.zip">Zipped Files.</a>
+                            <a href="/albums-download.php" download="albums.zip">Zipped Files.</a>
                         </div>
                         <div class="modal-footer">
                             <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
@@ -125,8 +125,10 @@ $albums      = getAlbumData($fb, $accessToken);
             </div>
             <div class="colorbox"></div>
             <div class="loader">
-                <img src="/lib/images/ring-alt.svg" alt="loading..."/>
-            </div>
+                <div class="loader-wrap-inner">
+                    <img src="/lib/images/ring-alt.svg" alt="loading..."/>
+                    <p>Hold on!<br/>While we fetch your photos from Facebook.</p> 
+                </div>
         </div>
 
         <!-- Jquery -->

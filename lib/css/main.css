@@ -39,22 +39,33 @@ and open the template in the editor.
     z-index: 1000;
     height: 100%;
     width: 100%;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.9);
     visibility: hidden;
 }
 
-.loader img{
+.loader-wrap-inner {
+    display: block;
+    overflow: hidden;
     position: absolute;
-    left: 50%;
-    top: 50%;
+    top: 45%;
+    text-align: center;
+    width: 100%;
+}
+
+.loader img{
+    width: 45px;
+}
+
+.loader p{
+    color: #fff;
+    font-family: 16px;
+    margin-top: 15px;
     z-index: 1001;
-    height: 32px;
-    width: 32px;
 }
 
 .no-padding{
-   padding: 0 !important;
-   margin: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .selector{
