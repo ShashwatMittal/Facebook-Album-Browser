@@ -2,6 +2,8 @@
 /**
  * This file contains all the Functions required in the project.
  * 
+ * PHP Version 7
+ * 
  * @category Functionality
  * @package  FBAlbumBrowser
  * @author   Shashwat Mittal <shashwat.mittal5@gmail.com>
@@ -10,6 +12,28 @@
  * @link     https://fb.shashwatmittal.com
  */
 require_once __DIR__ . '/vendor/autoload.php';
+
+function getUserData( $fb, $accessToken )
+ {
+    $fbApp   = $fb->getApp(); // Gets the FB App to send the request.
+    $request = new Facebook\FacebookRequest( $fbApp, $accessToken, 'GET', '/me/', array( 'fields' => 'id,name' ) );
+    try {
+        $response = $fb->getClient()->sendRequest( $request );
+    } catch ( Facebook\Exceptions\FacebookResponseException $e ) {
+        // When Graph returns an error
+        header( 'Location: http://fb.shashwatmittal.com/index.php' );
+//        echo 'Graph returned an error: ' . $e->getMessage();
+        exit;
+    } catch ( Facebook\Exceptions\FacebookSDKException $e ) {
+        // When validation fails or other local issues
+        header( "Location: index.php" ); // Redirects the user to the Login page to get the access token.
+        echo 'Facebook SDK returned an error: ' . $e->getMessage();
+        exit;
+    }
+
+    $responseData = $response->getDecodedBody(); // Decoding the data from the response object.
+    return $responseData['id']; // Returning the response data.
+}
 
 /**
  * Sends a request to the FB Graph API and returns the Name, Id, and Cover Photo of all the Albums.
@@ -199,4 +223,17 @@ function deletePath( $dirPath )
     } else {
         return false;
     }
+}
+
+/**
+ * Generates a hash of given user id
+ *
+ * @param type $user_id
+ * @return string Hash or NULL
+ */
+function userHash( $userId = '' ) {
+    if( empty( $userId ) ) {
+        return null;
+    }
+    return md5( $userId );
 }
