@@ -13,20 +13,28 @@
  */
 require_once __DIR__ . '/vendor/autoload.php';
 
+/**
+ * Sends a request to the FB Graph API and returns the Name and Id of the user.
+ * 
+ * @param Object $fb          Facebook object which makes the API calls to the Facebook Graph API.
+ * @param String $accessToken The access token returned by the Graph API to authenticate the API calls.
+ * 
+ * @return String Returns user ID.
+ */
 function getUserData( $fb, $accessToken )
- {
+{
     $fbApp   = $fb->getApp(); // Gets the FB App to send the request.
-    $request = new Facebook\FacebookRequest( $fbApp, $accessToken, 'GET', '/me/', array( 'fields' => 'id,name' ) );
+    $request = new Facebook\FacebookRequest($fbApp, $accessToken, 'GET', '/me/', array( 'fields' => 'id,name' ));
     try {
-        $response = $fb->getClient()->sendRequest( $request );
+        $response = $fb->getClient()->sendRequest($request);
     } catch ( Facebook\Exceptions\FacebookResponseException $e ) {
         // When Graph returns an error
-        header( 'Location: http://fb.shashwatmittal.com/index.php' );
-//        echo 'Graph returned an error: ' . $e->getMessage();
+        header('Location: http://fb.shashwatmittal.com/index.php');
+        //        echo 'Graph returned an error: ' . $e->getMessage();
         exit;
     } catch ( Facebook\Exceptions\FacebookSDKException $e ) {
         // When validation fails or other local issues
-        header( "Location: index.php" ); // Redirects the user to the Login page to get the access token.
+        header("Location: index.php"); // Redirects the user to the Login page to get the access token.
         echo 'Facebook SDK returned an error: ' . $e->getMessage();
         exit;
     }
@@ -53,7 +61,7 @@ function getAlbumData( $fb, $accessToken )
     } catch ( Facebook\Exceptions\FacebookResponseException $e ) {
         // When Graph returns an error
         header('Location: http://fb.shashwatmittal.com/index.php');
-//        echo 'Graph returned an error: ' . $e->getMessage();
+        //        echo 'Graph returned an error: ' . $e->getMessage();
         exit;
     } catch ( Facebook\Exceptions\FacebookSDKException $e ) {
         // When validation fails or other local issues
@@ -228,12 +236,13 @@ function deletePath( $dirPath )
 /**
  * Generates a hash of given user id
  *
- * @param type $user_id
+ * @param  type $user_id
  * @return string Hash or NULL
  */
-function userHash( $userId = '' ) {
-    if( empty( $userId ) ) {
+function userHash( $userId = '' ) 
+{
+    if(empty($userId) ) {
         return null;
     }
-    return md5( $userId );
+    return md5($userId);
 }

@@ -23,30 +23,30 @@ require_once 'config.php';
 require_once 'functions.php';
 
 // Saving the accessToken from the Session into an Access Token variable for sending requests.
-if ( isset( $_SESSION[ 'accessToken' ] ) ) {
+if (isset($_SESSION[ 'accessToken' ]) ) {
     $accessToken = $_SESSION[ 'accessToken' ];
 
-    $userID = getUserData( $fb, $accessToken );
+    $userID = getUserData($fb, $accessToken);
 
-    $file = '/var/www/albums-' . userHash( $userID ) . '.zip';
-    if ( file_exists( $file ) ) {
-        header( 'Content-Description: File Transfer' );
-        header( 'Content-type: application/octet-stream' );
-        header( 'Content-Disposition: attachment; filename=' . basename( $file ) );
-        header( 'Content-Transfer-Encoding: binary' );
-        header( 'Expires: 0' );
-        header( 'Cache-Control: must-revalidate, post-check=0, pre-check=0' );
-        header( 'Pragma: public' );
-        header( 'Content-Length: ' . filesize( $file ) );
+    $file = '/var/www/albums-' . userHash($userID) . '.zip';
+    if (file_exists($file) ) {
+        header('Content-Description: File Transfer');
+        header('Content-type: application/octet-stream');
+        header('Content-Disposition: attachment; filename=' . basename($file));
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
         ob_clean();
         flush();
-        readfile( $file );
+        readfile($file);
         exit;
     } else {
         // Redirects Logged in users to the Home Page.
-        header( 'Location: http://fb.shashwatmittal.com/index.php' );
+        header('Location: http://fb.shashwatmittal.com/index.php');
     }
 } else {
     // Redirects unauthorized users to the Home Page.
-    header( 'Location: http://fb.shashwatmittal.com/index.php' );
+    header('Location: http://fb.shashwatmittal.com/index.php');
 }

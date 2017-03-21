@@ -34,9 +34,9 @@ if (isset($_GET[ 'albums' ]) ) {
         foreach ( $albums as $album ) {
             $data = getPhotosForAlbumId($album[ 'id' ], $fb, $accessToken);
             foreach ( $data as $url ) {
-                $albumPath = 'images-' . userHash( $userID ) . '/' . trim( $album[ 'name' ] );
+                $albumPath = 'images-' . userHash($userID) . '/' . trim($album[ 'name' ]);
                 //Download and store image in the folder
-                downloadImage( $url, $albumPath );
+                downloadImage($url, $albumPath);
             }
         }
     }
@@ -50,13 +50,13 @@ if (isset($_GET[ 'zip' ]) ) {
 
 // Deletes the images once they are zipped and ready to be downloaded.
 if (isset($_GET[ 'deleteImages' ]) ) {
-    deletePath('images-'.  userHash( $userID).'');
+    deletePath('images-'.  userHash($userID).'');
     echo 'Images Deleted.';
 }
 
 // Deletes the zip file if the Modal is closed.
 if (isset($_GET[ 'deleteZip' ]) ) {
-    deletePath( $zipPath );
+    deletePath($zipPath);
     echo 'Zip file deleted.';
 }
 
